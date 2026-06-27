@@ -1,0 +1,54 @@
+# ---- Intel Quartus Prime ----
+db/
+incremental_db/
+output_files/
+greybox_tmp/
+*.qws
+*.rpt
+*.summary
+*.smsg
+*.jdi
+*.pin
+*.done
+*.sof
+*.pof
+*.sld
+*.qpf
+hc_output/
+.qsys_edit/
+PLLJ_PLLSPE_INFO.txt
+# Qsys-generated HDL (regenerate from the .qsys system in Platform Designer)
+rsa_qsys/
+*.sopcinfo
+
+# ---- Simulation (VCS / ModelSim / Verdi) ----
+simv
+simv.daidir/
+csrc/
+*.fsdb
+*.vpd
+*.vcd
+*.wlf
+*.log
+verdiLog/
+novas.*
+transcript
+work/
+ucli.key
+
+# ---- Host-side build / generated data ----
+*.o
+*.out
+a.out
+__pycache__/
+*.pyc
+
+# Generated output (regenerate by running the host script)
+**/dec.bin
+
+# ---- Editor / OS cruft ----
+*.bak
+*~
+.DS_Store
+.vscode/
+.idea/
