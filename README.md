@@ -83,7 +83,7 @@ recovered plaintext back to the host.
 │   ├── Rsa256Core.sv        # original RTL
 │   ├── Rsa256Wrapper.sv     # original RTL
 │   ├── DE2_115/
-│   │   ├── DE2_115.sv       # top-level (instantiate your generated Qsys here)
+│   │   ├── DE2_115.sv       # top-level 
 │   │   ├── DE2_115.qsf      # pin assignments
 │   │   └── DE2_115.sdc      # timing constraints
 │   ├── tb_verilog/          # testbenches
@@ -136,12 +136,7 @@ These were the most instructive bugs to solve and are the most representative of
   carries a leading `0x00` pad. Slicing the transmit bus as `[247:240]` (top 31 bytes) instead of
   `[255:248]` removed the artifact.
 
-## Known limitations / future work
 
-- `o_finished` is asserted for a single cycle; a held/ack-based handshake would be more robust.
-- The hot-reload timeout is a hard-coded constant; exposing it as a parameter would aid portability.
-
----
 
 ## License
 
