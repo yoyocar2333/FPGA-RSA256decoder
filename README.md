@@ -1,13 +1,13 @@
 # RSA-256 Hardware Decryptor (FPGA / SystemVerilog)
 
-A pipelined RSA-256 decryption accelerator for the Terasic **DE2-115 (Intel Cyclone IV)** board.
+An iterative RSA-256 decryption accelerator for the Terasic **DE2-115 (Intel Cyclone IV)** board.
 The design receives a private key and ciphertext from a host PC over RS-232, performs modular
 exponentiation entirely in hardware using **Montgomery multiplication**, and streams the
 recovered plaintext back to the host.
 
 > **Course context & academic integrity.** This was built as Lab 2 of NTUEE Digital Circuit Lab.
 > If you reuse or reference this work, please respect your own course's academic-integrity policy.
-> The original RTL is shared for portfolio purposes only.
+> The original RTL is shared for portfolio purposes only. This is a **team repository**; the checked-in source headers currently attribute `Rsa256Core.sv` and `Rsa256Wrapper.sv` to Yen-Fu Huang, so this repo should not be used to imply sole authorship by another teammate.
 
 ---
 
@@ -17,7 +17,7 @@ recovered plaintext back to the host.
   software-style loop, avoiding excessively long combinational paths.
 - **Two parallel Montgomery units** compute `m·t·2⁻²⁵⁶ mod N` (conditional multiply) and
   `t²·2⁻²⁵⁶ mod N` (square) simultaneously every iteration, collapsing the 256-bit exponentiation
-  to roughly **65 k clock cycles** per block.
+  to roughly **66 k clock cycles** per block (256 prep cycles plus 256 exponent bits, each serviced by the two concurrent 256-step Montgomery units).
 - **Custom Avalon-MM master FSM** that drives the Qsys RS-232 IP, with status polling and data
   transfer kept in strictly separate states to eliminate read-after-status desync.
 - **Hot-reload bonus**: an idle-timeout counter (~0.5 s @ 50 MHz) lets the machine accept a fresh
