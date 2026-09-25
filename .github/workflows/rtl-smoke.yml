@@ -1,0 +1,9 @@
+name: rtl-smoke
+on: [push, pull_request]
+jobs:
+  compile-core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y iverilog
+      - run: iverilog -g2012 -s Rsa256Core -o /tmp/rsa_core src/Rsa256Core.sv
