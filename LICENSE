@@ -1,7 +1,6 @@
 MIT License
 
 Copyright (c) 2026 Team 10, NTUEE Digital Circuit Lab
-(adjust this line to list all teammates who contributed the original RTL)
 
 This license applies to the original work in this repository — namely
 src/Rsa256Core.sv and src/Rsa256Wrapper.sv and the README. It does NOT
